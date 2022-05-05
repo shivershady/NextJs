@@ -7,7 +7,7 @@ function Index(props) {
     return (
         <div className="container mx-auto space-y-4">
             <NavBar/>
-            <Slide/>
+            <Slide page_type={2}/>
 
             <div className="flex flex-no-wrap">
                 {/* Sidebar starts */}

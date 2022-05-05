@@ -5,19 +5,8 @@ import {END} from "redux-saga";
 
 import Head from "next/head";
 import {wrapper} from "../store";
-import {useDispatch} from "react-redux";
-
-import {getProducts,getHotProducts, getSellingProducts} from "../actions/product";
-import {getSlide} from "../actions/slide";
 
 const MyApp = ({Component, pageProps}) => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getProducts());
-        dispatch(getSellingProducts());
-        dispatch(getHotProducts());
-    }, []);
 
     return (
         <>

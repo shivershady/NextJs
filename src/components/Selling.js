@@ -16,8 +16,6 @@ export default class Selling extends Component {
             slidesToScroll: 1
         };
         return (
-            <div className="mt-8">
-                <h2> Bán chạy </h2>
                 <Slider {...settings}>
                     {
                         (this.props.sellingProducts || []).map((product, index) => {
@@ -29,7 +27,6 @@ export default class Selling extends Component {
                         })
                     }
                 </Slider>
-            </div>
         );
     }
 }

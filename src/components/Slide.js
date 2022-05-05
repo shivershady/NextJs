@@ -1,12 +1,15 @@
 import React, { useState , useEffect } from "react";
 import Slider from "react-slick";
-import {useDispatch} from "react-redux";
+import {useDispatch , useSelector } from "react-redux";
 import {getSlide} from "../actions/slide";
 
-function Slide(props) {
+function Slide({page_type}) {
     const dispatch = useDispatch();
+
+    const slide = useSelector(state => state.slide.slide.data.data);
+
     useEffect(() => {
-      dispatch(getSlide({page_type : 0}));
+      dispatch(getSlide({page_type : page_type}));
     }, []);
 
 
@@ -19,29 +22,15 @@ function Slide(props) {
     });
 
     return (
-        <div className="mt-8">
-            <h2> Slider</h2>
             <Slider {...settings}>
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
+                {(slide||[]).map((item , index) => {
+                    return (
+                        <div key={index}>
+                            <img src={process.env.API_URL+"/storage/"+item?.image.pc} alt="slide" className="w-full h-80"/>
+                        </div>
+                    )
+                })}
             </Slider>
-        </div>
     );
 }
 
