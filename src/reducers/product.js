@@ -9,33 +9,12 @@ const initialState = {
     total: 0,
     errMess: null,
   },
-  productFeature: {
+  productSelling: {
     loading: false,
     data: [],
     errMess: null,
   },
-  productSuggest: {
-    loading: false,
-    data: [],
-    errMess: null,
-  },
-  homeProduct: {
-    loading: false,
-    data: [],
-    errMess: null,
-  },
-  homePropose: {
-    loading: false,
-    data: [],
-    errMess: null,
-  },
-  productDetail: {
-    loading: false,
-    data: {},
-    errMess: null,
-  },
-  productSearch: {
-    val: "",
+  productHot: {
     loading: false,
     data: [],
     errMess: null,
@@ -47,7 +26,7 @@ const productReducer = (state = initialState, action) => {
     case HYDRATE:
       return { ...state, ...cloneDeep(action.payload.product) };
 
-    case TYPE.GET_PRODUCT:
+    case TYPE.GET_PRODUCTS:
       return {
         ...state,
         product: {
@@ -55,7 +34,7 @@ const productReducer = (state = initialState, action) => {
           loading: true,
         },
       };
-    case TYPE.GET_PRODUCT_SUCCESS:
+    case TYPE.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
         product: {
@@ -65,7 +44,7 @@ const productReducer = (state = initialState, action) => {
           total: action.total,
         },
       };
-    case TYPE.GET_PRODUCT_ERROR:
+    case TYPE.GET_PRODUCTS_ERROR:
       return {
         ...state,
         product: {
@@ -75,164 +54,57 @@ const productReducer = (state = initialState, action) => {
         },
       };
 
-    case TYPE.GET_HOME_PRODUCT:
+    case TYPE.GET_SELLING_PRODUCTS:
       return {
         ...state,
-        homeProduct: {
-          ...state.homeProduct,
+        productSelling: {
+          ...state.productSelling,
           loading: true,
         },
       };
-    case TYPE.GET_HOME_PRODUCT_SUCCESS:
+    case TYPE.GET_SELLING_PRODUCTS_SUCCESS:
       return {
         ...state,
-        homeProduct: {
-          ...state.homeProduct,
+        productSelling: {
+          ...state.productSelling,
           loading: false,
           data: action.data,
+          total: action.total,
         },
       };
-    case TYPE.GET_HOME_PRODUCT_ERROR:
+    case TYPE.GET_SELLING_PRODUCTS_ERROR:
       return {
         ...state,
-        homeProduct: {
-          ...state.homeProduct,
-          loading: false,
-          errMess: action.errMess,
-        },
-      };
-    case TYPE.GET_DETAIL:
-      return {
-        ...state,
-        productDetail: {
-          ...state.productDetail,
-          loading: true,
-        },
-      };
-    case TYPE.GET_DETAIL_SUCCESS:
-      return {
-        ...state,
-        productDetail: {
-          ...state.productDetail,
-          loading: false,
-          data: action.data,
-        },
-      };
-    case TYPE.GET_DETAIL_ERROR:
-      return {
-        ...state,
-        productDetail: {
-          ...state.productDetail,
-          loading: false,
-          errMess: action.errMess,
-        },
-      };
-    case TYPE.GET_HOME_PROPOSE:
-      return {
-        ...state,
-        homePropose: {
-          ...state.homePropose,
-          loading: true,
-        },
-      };
-    case TYPE.GET_HOME_PROPOSE_SUCCESS:
-      return {
-        ...state,
-        homePropose: {
-          ...state.homePropose,
-          loading: false,
-          data: action.data,
-        },
-      };
-    case TYPE.GET_HOME_PROPOSE_ERROR:
-      return {
-        ...state,
-        homePropose: {
-          ...state.homePropose,
+        productSelling: {
+          ...state.productSelling,
           loading: false,
           errMess: action.errMess,
         },
       };
 
-    case TYPE.SEARCH_PRODUCT:
+    case TYPE.GET_HOT_PRODUCTS:
       return {
         ...state,
-        productSearch: {
-          ...state.productSearch,
-          val: action.name,
+        productHot: {
+          ...state.productHot,
           loading: true,
         },
       };
-    case TYPE.SEARCH_PRODUCT_SUCCESS:
+    case TYPE.GET_HOT_PRODUCTS_SUCCESS:
       return {
         ...state,
-        productSearch: {
-          ...state.productSearch,
+        productHot: {
+          ...state.productHot,
           loading: false,
           data: action.data,
+          total: action.total,
         },
       };
-    case TYPE.SEARCH_PRODUCT_ERROR:
-      return {
-        ...initialState,
-        productSearch: {
-          ...initialState.productSearch,
-          loading: false,
-          errMess: action.errMess,
-        },
-      };
-
-    case TYPE.GET_SUGGEST:
+    case TYPE.GET_HOT_PRODUCTS_ERROR:
       return {
         ...state,
-        productSuggest: {
-          ...state.productSuggest,
-          val: action.name,
-          loading: true,
-        },
-      };
-    case TYPE.GET_SUGGEST_SUCCESS:
-      return {
-        ...state,
-        productSuggest: {
-          ...state.productSuggest,
-          loading: false,
-          data: action.data,
-        },
-      };
-    case TYPE.GET_SUGGEST_ERROR:
-      return {
-        ...initialState,
-        productSuggest: {
-          ...initialState.productSuggest,
-          loading: false,
-          errMess: action.errMess,
-        },
-      };
-
-    case TYPE.GET_FEATURE:
-      return {
-        ...state,
-        productFeature: {
-          ...state.productFeature,
-          val: action.name,
-          loading: true,
-        },
-      };
-    case TYPE.GET_FEATURE_SUCCESS:
-      return {
-        ...state,
-        productFeature: {
-          ...state.productFeature,
-          loading: false,
-          data: action.data,
-        },
-      };
-    case TYPE.GET_FEATURE_ERROR:
-      return {
-        ...initialState,
-        productFeature: {
-          ...initialState.productFeature,
+        productHot: {
+          ...state.productHot,
           loading: false,
           errMess: action.errMess,
         },

@@ -10,7 +10,7 @@ import {
 import { GET_CATEGORY} from "../contants/category";
 
 export function* getCategory(action) {
-    const url = `categories/get?id_website=4`;
+    const url = `categories/get?id_website=4&active=1`;
     try {
         const response = yield call(Request, url);
         yield put(getCategorySuccess(response));

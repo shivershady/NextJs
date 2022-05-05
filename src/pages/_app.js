@@ -1,14 +1,24 @@
-import React from "react";
-import Head from "next/head";
+import React, {useEffect} from "react";
 import '../../styles/globals.css';
 
 import {END} from "redux-saga";
 
+import Head from "next/head";
 import {wrapper} from "../store";
-import Slide from "../components/Slide";
-import NavBar from "../components/NavBar";
+import {useDispatch} from "react-redux";
+
+import {getProducts,getHotProducts, getSellingProducts} from "../actions/product";
+import {getSlide} from "../actions/slide";
 
 const MyApp = ({Component, pageProps}) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProducts());
+        dispatch(getSellingProducts());
+        dispatch(getHotProducts());
+    }, []);
+
     return (
         <>
             <Head>
