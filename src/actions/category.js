@@ -15,11 +15,11 @@ export const getCategoryError = (errMess) => ({
     errMess,
 });
 
+//filter cat parent ==============================
 
-export const getFilterCategory = (offset, page) => ({
+export const getFilterCategory = (idCat) => ({
     type: TYPE.GET_FILTER_CATEGORY,
-    offset,
-    page,
+    idCat: idCat,
 });
 export const getFilterCategorySuccess = (data, total) => ({
     type: TYPE.GET_FILTER_CATEGORY_SUCCESS,
@@ -28,5 +28,21 @@ export const getFilterCategorySuccess = (data, total) => ({
 });
 export const getFilterCategoryError = (errMess) => ({
     type: TYPE.GET_FILTER_CATEGORY_ERROR,
+    errMess,
+});
+
+//filter cat child ==============================
+export const getFilter = (offset, page) => ({
+    type: TYPE.GET_FILTER,
+    offset,
+    page,
+});
+export const getFilterSuccess = (data, total) => ({
+    type: TYPE.GET_FILTER_SUCCESS,
+    data: data,
+    total: total,
+});
+export const getFilterError = (errMess) => ({
+    type: TYPE.GET_FILTER_ERROR,
     errMess,
 });

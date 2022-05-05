@@ -13,6 +13,11 @@ const initialState = {
         data: [],
         errMess: null,
     },
+    filter: {
+        loading: false,
+        data: [],
+        errMess: null,
+    },
 };
 
 const categoryReducer = (state = initialState, action) => {
@@ -75,6 +80,35 @@ const categoryReducer = (state = initialState, action) => {
                     errMess: action.errMess,
                 },
             };
+
+        case TYPE.GET_FILTER:
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    loading: true,
+                },
+            };
+        case TYPE.GET_FILTER_SUCCESS:
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    loading: false,
+                    data: action.data,
+                    total: action.total,
+                },
+            };
+        case TYPE.GET_FILTER_ERROR:
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    loading: false,
+                    errMess: action.errMess,
+                },
+            };
+
         default:
             return state;
     }

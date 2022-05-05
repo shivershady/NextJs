@@ -14,7 +14,7 @@ import {
 import {GET_PRODUCTS, GET_SELLING_PRODUCTS, GET_HOT_PRODUCTS} from "../contants/product";
 
 export function* getProducts(action) {
-    const url = `api/products/get?active=1&id_website=4&id_filter=${action?.offset?.id_fillter ? action?.offset?.id_fillter :''}`;
+    const url = `api/products/get?active=1&id_website=4&id_cat=${action.offset?.id_cart ? action.offset?.id_cart:''}&id_filter=${action.offset?.id_filter ? action.offset?.id_filter :''}`;
     try {
         const response = yield call(Request, url);
         yield put(getProductsSuccess(response));

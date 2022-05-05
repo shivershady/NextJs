@@ -2,8 +2,12 @@ import React from 'react';
 import NavBar from "../../../components/NavBar";
 import Slide from "../../../components/Slide";
 import ProductItem from "../../../components/ProductItem";
+import {useRouter} from "next/router";
 
 function Index(props) {
+    const router = useRouter();
+    console.log("get slug: ", router.query);
+    const product = router.query;
     return (
         <div className="container mx-auto space-y-4">
             <NavBar/>
@@ -15,7 +19,7 @@ function Index(props) {
                     <div
                         className="w-full h-full rounded border-dashed border-2 border-gray-300">
                         {/* Place your content here */}
-                        <ProductItem/>
+                        {/*<ProductItem product={product}/>*/}
                     </div>
                 </div>
                 {/* Sidebar starts */}
