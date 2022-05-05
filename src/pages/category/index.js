@@ -1,83 +1,72 @@
-import React from 'react';
+import React, {useEffect , useState} from 'react';
 import NavBar from "../../components/NavBar";
 import Slide from "../../components/Slide";
 import ProductItem from "../../components/ProductItem";
+import {useDispatch, useSelector} from "react-redux";
+import {getProducts} from "../../actions/product";
+import {getCategory, getFilterCategory} from "../../actions/category";
 
-function Index(props) {
+function Index() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getProducts());
+        dispatch(getCategory())
+    }, []);
+
+    const listProduct = useSelector(state => state.product.product.data.data);
+    const listCategory = useSelector(state => state.category.category.data.data);
+    const filterCat = useSelector(state => state.category.categoryFilter.data.data);
+    const [showFilter, setShowFilter] = useState('');
+
+    const getFilterCat = (id) => {
+        dispatch(getFilterCategory({id: id}));
+        setShowFilter(id);
+    }
+    const handleFilter = () => {
+
+    }
     return (
         <div className="container mx-auto space-y-4">
             <NavBar/>
             <Slide page_type={2}/>
 
             <div className="flex flex-no-wrap">
-                {/* Sidebar starts */}
-                {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
                 <div
-                    className="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
+                    className="w-64 absolute sm:relative bg-gray-800 shadow flex-col justify-between hidden sm:flex my-12">
                     <div className="px-8">
                         <ul className="mt-12">
-                            <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-grid" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <rect x={4} y={4} width={6} height={6} rx={1}/>
-                                        <rect x={14} y={4} width={6} height={6} rx={1}/>
-                                        <rect x={4} y={14} width={6} height={6} rx={1}/>
-                                        <rect x={14} y={14} width={6} height={6} rx={1}/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Dashboard</span>
-                                </div>
-                                <div
-                                    className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">5
-                                </div>
-                            </li>
-                            <li className="flex w-full justify-between text-gray-600 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-puzzle" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <path
-                                            d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Products</span>
-                                </div>
-                                <div
-                                    className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">8
-                                </div>
-                            </li>
-                            <li className="flex w-full justify-between text-gray-600 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-compass" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <polyline points="8 16 10 10 16 8 14 14 8 16"/>
-                                        <circle cx={12} cy={12} r={9}/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Performance</span>
-                                </div>
-                            </li>
+                            {(listCategory || []).map((item, index) => {
+                                return (
+                                    <li className="w-full text-gray-300 cursor-pointer items-center mb-6"
+                                        key={index}>
+                                        <div className="flex items-center  hover:text-gray-500">
+                                            <span onClick={() => getFilterCat(item.id)}
+                                                  className="text-sm  ml-2">{item.name}</span>
+                                        </div>
+                                        <ul className="list-disc ml-8">
+                                            {filterCat && item.id===showFilter && filterCat.map((item, index) =>
+                                                <>
+                                                <li key={index} onClick={()=>handleFilter()}>{item.name}</li>
+
+                                                </>
+                                            )}
+                                        </ul>
+                                    </li>
+                                )
+                            })}
                         </ul>
                     </div>
                 </div>
-                {/* Sidebar ends */}
-                {/* Remove class [ h-64 ] when adding a card block */}
+
                 <div className="container mx-auto py-10 md:w-4/5 w-11/12 px-6">
-                    {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
                     <div
                         className="w-full h-full rounded border-dashed border-2 border-gray-300">
-                        {/* Place your content here */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
-                            <ProductItem />
-                            <ProductItem />
-                            <ProductItem />
-                            <ProductItem />
+                            {
+                                (listProduct || []).map((item, index) =>
+                                    <ProductItem key={index} product={item}/>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

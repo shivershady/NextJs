@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 
 function NavBar(props) {
     return (
@@ -13,7 +14,9 @@ function NavBar(props) {
             </div>
             <div className="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
                 <div className="lg:flex lg:items-stretch lg:justify-end ml-auto">
-                    <a href="#" className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Item 1</a>
+                    <Link href="/category">
+                    <a className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Category</a>
+                    </Link>
                     <a href="#" className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Item 2</a>
                     <a href="#" className="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Item 3</a>
                 </div>

@@ -1,9 +1,14 @@
 import * as TYPE from "../contants/category";
-import { HYDRATE } from "next-redux-wrapper";
+import {HYDRATE} from "next-redux-wrapper";
 import cloneDeep from "lodash/cloneDeep";
 
 const initialState = {
     category: {
+        loading: false,
+        data: [],
+        errMess: null,
+    },
+    categoryFilter: {
         loading: false,
         data: [],
         errMess: null,
@@ -13,7 +18,7 @@ const initialState = {
 const categoryReducer = (state = initialState, action) => {
     switch (action.type) {
         case HYDRATE:
-            return { ...state, ...cloneDeep(action.payload.category) };
+            return {...state, ...cloneDeep(action.payload.category)};
 
         case TYPE.GET_CATEGORY:
             return {
@@ -38,6 +43,34 @@ const categoryReducer = (state = initialState, action) => {
                 ...state,
                 category: {
                     ...state.category,
+                    loading: false,
+                    errMess: action.errMess,
+                },
+            };
+
+        case TYPE.GET_FILTER_CATEGORY:
+            return {
+                ...state,
+                categoryFilter: {
+                    ...state.categoryFilter,
+                    loading: true,
+                },
+            };
+        case TYPE.GET_FILTER_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                categoryFilter: {
+                    ...state.categoryFilter,
+                    loading: false,
+                    data: action.data,
+                    total: action.total,
+                },
+            };
+        case TYPE.GET_FILTER_CATEGORY_ERROR:
+            return {
+                ...state,
+                categoryFilter: {
+                    ...state.categoryFilter,
                     loading: false,
                     errMess: action.errMess,
                 },
