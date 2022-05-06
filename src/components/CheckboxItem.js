@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 const CheckboxItem = ({item, current, handleFunc}) => {
     const [status, setStatus] = useState(false);

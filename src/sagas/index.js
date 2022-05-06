@@ -3,6 +3,7 @@ import ProductSaga from "./product";
 import CategorySaga from "./category";
 import SlideSaga from "./slide";
 import ArticleSaga from "./article";
+import OrderSaga from "./order";
 
 export default function* rootSaga() {
   yield all([
@@ -10,5 +11,6 @@ export default function* rootSaga() {
     SlideSaga(),
     CategorySaga(),
     ArticleSaga(),
+    OrderSaga()
   ]);
 }

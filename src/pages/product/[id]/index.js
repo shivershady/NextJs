@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProductDetail} from "../../../actions/product";
 import ProductDetail from "../../../components/ProductDetail";
 import CheckboxItem from "../../../components/CheckboxItem";
+import { incrementProductToCart} from "../../../helper/handleProduct";
 
 function Index(props) {
     const router = useRouter();
@@ -19,9 +20,19 @@ function Index(props) {
     const [currentFilter, setCurrentFilter] = useState([]);
     const [quantity, setQuantity] = useState('');
 
+    const newProd = {
+        ...product,
+        currentFilter,
+    }
+
     useEffect(() => {
         dispatch(getProductDetail({alias}));
     }, []);
+
+    const handleAddCart = () => {
+        incrementProductToCart(newProd,quantity);
+        alert('Thêm vào giỏ hàng thành công');
+    };
 
     return (
         <div className="container mx-auto space-y-4">
@@ -34,7 +45,7 @@ function Index(props) {
                 </div>
                 <div
                     className="my-12 w-64 absolute sm:relative bg-gray-800 shadow flex-col justify-between hidden sm:flex">
-                    <div className="px-8 h-full flex items-center">
+                    <div className="px-8">
                         <ul className="mt-12 list-disc">
                             {(product?.filters || []).map((filter, index) => (
                                 <li className="w-full items-center mb-6 cursor-pointer" key={index}>
@@ -51,6 +62,7 @@ function Index(props) {
                         </ul>
                     </div>
                     <button type="button"
+                            onClick={() => handleAddCart()}
                             className="py-2 px-4 mx-auto mb-4 bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-2/3 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-full">
                         Add to cart
                     </button>

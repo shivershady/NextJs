@@ -10,7 +10,7 @@ function ProductDetail({product, handleQuantityProduct}) {
 
     return (
         <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden my-4">
-            <img className="w-full h-full object-cover"
+            <img className="w-full h-96 object-cover"
                  src={process.env.API_URL + "/storage/" + product?.thumb[0]}
                  alt="avatar"/>
             <div className="py-4 px-6">
@@ -22,7 +22,7 @@ function ProductDetail({product, handleQuantityProduct}) {
                     </p>
                     <p className="line-through text-gray-500 font-bold">{formatMoney(product?.old_price)}</p>
                 </div>
-                <div className="my-4 space-y-2">
+                <div className="my-4 flex gap-8">
                     <div className="text-xl font-bold">Số lượng</div>
                     <div className="flex gap-8">
                         <button onClick={() => quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1)}>-

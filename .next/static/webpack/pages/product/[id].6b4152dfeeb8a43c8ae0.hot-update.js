@@ -1,0 +1,145 @@
+webpackHotUpdate_N_E("pages/product/[id]",{
+
+/***/ "./src/components/CheckboxItem.js":
+/*!****************************************!*\
+  !*** ./src/components/CheckboxItem.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-jsx/style */ "./node_modules/styled-jsx/style.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+
+
+var _jsxFileName = "E:\\Nextjs\\next-cy\\src\\components\\CheckboxItem.js",
+    _this = undefined,
+    _s = $RefreshSig$();
+
+
+
+
+var CheckboxItem = function CheckboxItem(_ref) {
+  _s();
+
+  var item = _ref.item,
+      current = _ref.current,
+      handleFunc = _ref.handleFunc;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      status = _useState[0],
+      setStatus = _useState[1];
+
+  var tickHandle = function tickHandle(stt) {
+    var check = current.includes(item.id);
+
+    if (check) {
+      var tmp = current.filter(function (lab) {
+        return lab !== item.id;
+      });
+      handleFunc(item);
+    } else {
+      var newCurrent = current.splice(item.id, 1);
+      handleFunc(newCurrent);
+    }
+
+    setStatus(stt);
+  };
+
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+    className: "jsx-3271222562" + " " + "flex gap-4",
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("div", {
+      onClick: function onClick() {
+        return tickHandle(!status);
+      },
+      className: "jsx-3271222562" + " " + "tick-box ".concat(status ? 'active' : null)
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 13
+    }, _this), " ", item.name, /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      id: "3271222562",
+      children: ".tick-box.jsx-3271222562{height:20px;width:20px;border:1px solid #ebebeb;}.tick-box.active.jsx-3271222562{background:#0070f3;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkU6XFxOZXh0anNcXG5leHQtY3lcXHNyY1xcY29tcG9uZW50c1xcQ2hlY2tib3hJdGVtLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXNCd0IsQUFHaUMsQUFLSyxZQUpOLE9BS2YsSUFKNkIseUJBQzdCIiwiZmlsZSI6IkU6XFxOZXh0anNcXG5leHQtY3lcXHNyY1xcY29tcG9uZW50c1xcQ2hlY2tib3hJdGVtLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHt1c2VTdGF0ZX0gZnJvbSBcInJlYWN0XCI7XHJcblxyXG5jb25zdCBDaGVja2JveEl0ZW0gPSAoe2l0ZW0sIGN1cnJlbnQsIGhhbmRsZUZ1bmN9KSA9PiB7XHJcbiAgICBjb25zdCBbc3RhdHVzLCBzZXRTdGF0dXNdID0gdXNlU3RhdGUoZmFsc2UpO1xyXG5cclxuICAgIGNvbnN0IHRpY2tIYW5kbGUgPSAoc3R0KSA9PiB7XHJcbiAgICAgICAgICAgIGxldCBjaGVjayA9IGN1cnJlbnQuaW5jbHVkZXMoaXRlbS5pZCk7XHJcbiAgICAgICAgICAgIGlmKGNoZWNrKXtcclxuICAgICAgICAgICAgICAgIGxldCB0bXAgPSBjdXJyZW50LmZpbHRlcihsYWIgPT4gbGFiICE9PSBpdGVtLmlkKTtcclxuICAgICAgICAgICAgICAgIGhhbmRsZUZ1bmMoaXRlbSlcclxuICAgICAgICAgICAgfSBlbHNle1xyXG4gICAgICAgICAgICAgICAgY29uc3QgbmV3Q3VycmVudCA9IGN1cnJlbnQuc3BsaWNlKGl0ZW0uaWQsMSk7XHJcbiAgICAgICAgICAgICAgICBoYW5kbGVGdW5jKG5ld0N1cnJlbnQpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIHNldFN0YXR1cyhzdHQpO1xyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiAoXHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtNFwiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHRpY2stYm94ICR7c3RhdHVzID8gJ2FjdGl2ZScgOiBudWxsfWB9IG9uQ2xpY2s9eygpID0+IHRpY2tIYW5kbGUoIXN0YXR1cyl9Lz4ge2l0ZW0ubmFtZX1cclxuXHJcbiAgICAgICAgICAgIDxzdHlsZSBqc3g+e2BcclxuICAgICAgICAgICAgICAgIC50aWNrLWJveHtcclxuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDIwcHg7XHJcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDIwcHg7XHJcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2ViZWJlYjtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIC50aWNrLWJveC5hY3RpdmV7XHJcbiAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQ6ICMwMDcwZjM7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgICA8L2Rpdj5cclxuICAgIClcclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgQ2hlY2tib3hJdGVtOyJdfQ== */\n/*@ sourceURL=E:\\\\Nextjs\\\\next-cy\\\\src\\\\components\\\\CheckboxItem.js */"
+    }, void 0, false, void 0, _this)]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 20,
+    columnNumber: 9
+  }, _this);
+};
+
+_s(CheckboxItem, "2WbRiTAV0HpyuJgyVzzDJBs2628=");
+
+_c = CheckboxItem;
+/* harmony default export */ __webpack_exports__["default"] = (CheckboxItem);
+
+var _c;
+
+$RefreshReg$(_c, "CheckboxItem");
+
+;
+    var _a, _b;
+    // Legacy CSS implementations will `eval` browser code in a Node.js context
+    // to extract CSS. For backwards compatibility, we need to check we're in a
+    // browser context before continuing.
+    if (typeof self !== 'undefined' &&
+        // AMP / No-JS mode does not inject these helpers:
+        '$RefreshHelpers$' in self) {
+        var currentExports = module.__proto__.exports;
+        var prevExports = (_b = (_a = module.hot.data) === null || _a === void 0 ? void 0 : _a.prevExports) !== null && _b !== void 0 ? _b : null;
+        // This cannot happen in MainTemplate because the exports mismatch between
+        // templating and execution.
+        self.$RefreshHelpers$.registerExportsForReactRefresh(currentExports, module.i);
+        // A module can be accepted automatically based on its exports, e.g. when
+        // it is a Refresh Boundary.
+        if (self.$RefreshHelpers$.isReactRefreshBoundary(currentExports)) {
+            // Save the previous exports on update so we can compare the boundary
+            // signatures.
+            module.hot.dispose(function (data) {
+                data.prevExports = currentExports;
+            });
+            // Unconditionally accept an update to this module, we'll check if it's
+            // still a Refresh Boundary later.
+            module.hot.accept();
+            // This field is set when the previous version of this module was a
+            // Refresh Boundary, letting us know we need to check for invalidation or
+            // enqueue an update.
+            if (prevExports !== null) {
+                // A boundary can become ineligible if its exports are incompatible
+                // with the previous exports.
+                //
+                // For example, if you add/remove/change exports, we'll want to
+                // re-execute the importing modules, and force those components to
+                // re-render. Similarly, if you convert a class component to a
+                // function, we want to invalidate the boundary.
+                if (self.$RefreshHelpers$.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)) {
+                    module.hot.invalidate();
+                }
+                else {
+                    self.$RefreshHelpers$.scheduleUpdate();
+                }
+            }
+        }
+        else {
+            // Since we just executed the code for the module, it's possible that the
+            // new exports made it ineligible for being a boundary.
+            // We only care about the case when we were _previously_ a boundary,
+            // because we already accepted this update (accidental side effect).
+            var isNoLongerABoundary = prevExports !== null;
+            if (isNoLongerABoundary) {
+                module.hot.invalidate();
+            }
+        }
+    }
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/next/dist/compiled/webpack/harmony-module.js */ "./node_modules/next/dist/compiled/webpack/harmony-module.js")(module)))
+
+/***/ })
+
+})
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9fTl9FLy4vc3JjL2NvbXBvbmVudHMvQ2hlY2tib3hJdGVtLmpzIl0sIm5hbWVzIjpbIkNoZWNrYm94SXRlbSIsIml0ZW0iLCJjdXJyZW50IiwiaGFuZGxlRnVuYyIsInVzZVN0YXRlIiwic3RhdHVzIiwic2V0U3RhdHVzIiwidGlja0hhbmRsZSIsInN0dCIsImNoZWNrIiwiaW5jbHVkZXMiLCJpZCIsInRtcCIsImZpbHRlciIsImxhYiIsIm5ld0N1cnJlbnQiLCJzcGxpY2UiLCJuYW1lIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTs7QUFFQSxJQUFNQSxZQUFZLEdBQUcsU0FBZkEsWUFBZSxPQUFpQztBQUFBOztBQUFBLE1BQS9CQyxJQUErQixRQUEvQkEsSUFBK0I7QUFBQSxNQUF6QkMsT0FBeUIsUUFBekJBLE9BQXlCO0FBQUEsTUFBaEJDLFVBQWdCLFFBQWhCQSxVQUFnQjs7QUFBQSxrQkFDdEJDLHNEQUFRLENBQUMsS0FBRCxDQURjO0FBQUEsTUFDM0NDLE1BRDJDO0FBQUEsTUFDbkNDLFNBRG1DOztBQUdsRCxNQUFNQyxVQUFVLEdBQUcsU0FBYkEsVUFBYSxDQUFDQyxHQUFELEVBQVM7QUFDcEIsUUFBSUMsS0FBSyxHQUFHUCxPQUFPLENBQUNRLFFBQVIsQ0FBaUJULElBQUksQ0FBQ1UsRUFBdEIsQ0FBWjs7QUFDQSxRQUFHRixLQUFILEVBQVM7QUFDTCxVQUFJRyxHQUFHLEdBQUdWLE9BQU8sQ0FBQ1csTUFBUixDQUFlLFVBQUFDLEdBQUc7QUFBQSxlQUFJQSxHQUFHLEtBQUtiLElBQUksQ0FBQ1UsRUFBakI7QUFBQSxPQUFsQixDQUFWO0FBQ0FSLGdCQUFVLENBQUNGLElBQUQsQ0FBVjtBQUNILEtBSEQsTUFHTTtBQUNGLFVBQU1jLFVBQVUsR0FBR2IsT0FBTyxDQUFDYyxNQUFSLENBQWVmLElBQUksQ0FBQ1UsRUFBcEIsRUFBdUIsQ0FBdkIsQ0FBbkI7QUFDQVIsZ0JBQVUsQ0FBQ1ksVUFBRCxDQUFWO0FBQ0g7O0FBQ0RULGFBQVMsQ0FBQ0UsR0FBRCxDQUFUO0FBQ1AsR0FWRDs7QUFZQSxzQkFFSTtBQUFBLHdDQUFlLFlBQWY7QUFBQSw0QkFDSTtBQUF3RCxhQUFPLEVBQUU7QUFBQSxlQUFNRCxVQUFVLENBQUMsQ0FBQ0YsTUFBRixDQUFoQjtBQUFBLE9BQWpFO0FBQUEsNkRBQTRCQSxNQUFNLEdBQUcsUUFBSCxHQUFjLElBQWhEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQURKLE9BQ21HSixJQUFJLENBQUNnQixJQUR4RztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FGSjtBQWlCSCxDQWhDRDs7R0FBTWpCLFk7O0tBQUFBLFk7QUFrQ1NBLDJFQUFmIiwiZmlsZSI6InN0YXRpYy93ZWJwYWNrL3BhZ2VzL3Byb2R1Y3QvW2lkXS42YjQxNTJkZmVlYjhhNDNjOGFlMC5ob3QtdXBkYXRlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHt1c2VTdGF0ZX0gZnJvbSBcInJlYWN0XCI7XHJcblxyXG5jb25zdCBDaGVja2JveEl0ZW0gPSAoe2l0ZW0sIGN1cnJlbnQsIGhhbmRsZUZ1bmN9KSA9PiB7XHJcbiAgICBjb25zdCBbc3RhdHVzLCBzZXRTdGF0dXNdID0gdXNlU3RhdGUoZmFsc2UpO1xyXG5cclxuICAgIGNvbnN0IHRpY2tIYW5kbGUgPSAoc3R0KSA9PiB7XHJcbiAgICAgICAgICAgIGxldCBjaGVjayA9IGN1cnJlbnQuaW5jbHVkZXMoaXRlbS5pZCk7XHJcbiAgICAgICAgICAgIGlmKGNoZWNrKXtcclxuICAgICAgICAgICAgICAgIGxldCB0bXAgPSBjdXJyZW50LmZpbHRlcihsYWIgPT4gbGFiICE9PSBpdGVtLmlkKTtcclxuICAgICAgICAgICAgICAgIGhhbmRsZUZ1bmMoaXRlbSlcclxuICAgICAgICAgICAgfSBlbHNle1xyXG4gICAgICAgICAgICAgICAgY29uc3QgbmV3Q3VycmVudCA9IGN1cnJlbnQuc3BsaWNlKGl0ZW0uaWQsMSk7XHJcbiAgICAgICAgICAgICAgICBoYW5kbGVGdW5jKG5ld0N1cnJlbnQpO1xyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIHNldFN0YXR1cyhzdHQpO1xyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiAoXHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtNFwiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHRpY2stYm94ICR7c3RhdHVzID8gJ2FjdGl2ZScgOiBudWxsfWB9IG9uQ2xpY2s9eygpID0+IHRpY2tIYW5kbGUoIXN0YXR1cyl9Lz4ge2l0ZW0ubmFtZX1cclxuXHJcbiAgICAgICAgICAgIDxzdHlsZSBqc3g+e2BcclxuICAgICAgICAgICAgICAgIC50aWNrLWJveHtcclxuICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IDIwcHg7XHJcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDIwcHg7XHJcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2ViZWJlYjtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIC50aWNrLWJveC5hY3RpdmV7XHJcbiAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQ6ICMwMDcwZjM7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgICA8L2Rpdj5cclxuICAgIClcclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgQ2hlY2tib3hJdGVtOyJdLCJzb3VyY2VSb290IjoiIn0=
