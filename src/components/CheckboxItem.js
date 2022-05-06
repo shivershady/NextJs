@@ -18,6 +18,7 @@ const CheckboxItem = ({item, current, handleFunc}) => {
 
         <div className="flex gap-4">
             <div className={`tick-box ${status ? 'active' : null}`} onClick={() => tickHandle(!status)}/> {item.name}
+
             <style jsx>{`
                 .tick-box{
                     height: 20px;

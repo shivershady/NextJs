@@ -19,6 +19,11 @@ const initialState = {
     data: [],
     errMess: null,
   },
+  productDetail: {
+    loading: false,
+    data: [],
+    errMess: null,
+  },
 };
 
 const productReducer = (state = initialState, action) => {
@@ -110,6 +115,33 @@ const productReducer = (state = initialState, action) => {
         },
       };
 
+    case TYPE.GET_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail: {
+          ...state.productDetail,
+          loading: true,
+        },
+      };
+    case TYPE.GET_PRODUCT_DETAIL_SUCCESS:
+      return {
+        ...state,
+        productDetail: {
+          ...state.productDetail,
+          loading: false,
+          data: action.data,
+          total: action.total,
+        },
+      };
+    case TYPE.GET_PRODUCT_DETAIL_ERROR:
+      return {
+        ...state,
+        productDetail: {
+          ...state.productDetail,
+          loading: false,
+          errMess: action.errMess,
+        },
+      };
     default:
       return state;
   }

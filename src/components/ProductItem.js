@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router'
+import { formatMoney} from "../lib/helper";
 
 function ProductItem({product}) {
 
@@ -8,7 +9,9 @@ function ProductItem({product}) {
     const nextDetail = (product) => {
             router.push({
                 pathname: `/product/${product.id}`,
-                query: product,
+                query: {
+                    alias : product.alias
+                },
             });
     }
 
@@ -17,14 +20,14 @@ function ProductItem({product}) {
             <img src={process.env.API_URL+"/storage/"+product?.thumb[0]} alt="adidas" className="w-full p-4 h-80 m-auto" />
             <div className="bg-pink-200 m-3 p-4 rounded-lg">
                 <p className="text-white text-xl font-bold ">
-                    {product?.alias}
+                    {product?.name}
                 </p>
                 <p className="text-gray-50 text-xs">
                     {product?.description}
                 </p>
                 <div className="flex items-center justify-between ">
                     <p className="text-white">
-                        {product?.price} vnđ
+                        {formatMoney(product?.price)}
                     </p>
                     <button onClick={(event)=>{event.stopPropagation();alert("child")}} type="button" className="w-10 h-10 text-base font-medium rounded-full text-white bg-pink-500 hover:bg-pink-700">
                         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} className="mx-auto" fill="white" viewBox="0 0 1792 1792">

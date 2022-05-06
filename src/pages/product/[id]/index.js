@@ -1,82 +1,59 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from "../../../components/NavBar";
 import Slide from "../../../components/Slide";
 import ProductItem from "../../../components/ProductItem";
 import {useRouter} from "next/router";
+import {useDispatch, useSelector} from "react-redux";
+import {getProductDetail} from "../../../actions/product";
+import ProductDetail from "../../../components/ProductDetail";
+import CheckboxItem from "../../../components/CheckboxItem";
 
 function Index(props) {
     const router = useRouter();
-    console.log("get slug: ", router.query);
-    const product = router.query;
+    const dispatch = useDispatch();
+
+    const productQuery = router.query;
+    const alias = productQuery.alias;
+
+    const product = useSelector(state => state.product.productDetail.data.data);
+    const [currentFilter, setCurrentFilter] = useState([]);
+    const [quantity, setQuantity] = useState('');
+
+    useEffect(() => {
+        dispatch(getProductDetail({alias}));
+    }, []);
+
     return (
         <div className="container mx-auto space-y-4">
             <NavBar/>
-            <Slide/>
+            <Slide page_type={2}/>
 
-            <div className="flex flex-no-wrap">
-                <div className="container mx-auto py-10 md:w-4/5 w-11/12 px-6">
-                    {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-                    <div
-                        className="w-full h-full rounded border-dashed border-2 border-gray-300">
-                        {/* Place your content here */}
-                        {/*<ProductItem product={product}/>*/}
-                    </div>
+            <div className="flex flex-no-wrap gap-6">
+                <div className="py-10 md:w-4/5 w-11/12">
+                    <ProductDetail product={product} handleQuantityProduct={(quantity)=>setQuantity(quantity)}/>
                 </div>
-                {/* Sidebar starts */}
-                {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
                 <div
-                    className="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
-                    <div className="px-8">
-                        <ul className="mt-12">
-                            <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-grid" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <rect x={4} y={4} width={6} height={6} rx={1}/>
-                                        <rect x={14} y={4} width={6} height={6} rx={1}/>
-                                        <rect x={4} y={14} width={6} height={6} rx={1}/>
-                                        <rect x={14} y={14} width={6} height={6} rx={1}/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Dashboard</span>
-                                </div>
-                                <div
-                                    className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">5
-                                </div>
-                            </li>
-                            <li className="flex w-full justify-between text-gray-600 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-puzzle" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <path
-                                            d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Products</span>
-                                </div>
-                                <div
-                                    className="py-1 px-3 bg-gray-700 rounded text-gray-500 flex items-center justify-center text-xs">8
-                                </div>
-                            </li>
-                            <li className="flex w-full justify-between text-gray-600 hover:text-gray-500 cursor-pointer items-center mb-6">
-                                <div className="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         className="icon icon-tabler icon-tabler-compass" width={18} height={18}
-                                         viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none"
-                                         strokeLinecap="round" strokeLinejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z"/>
-                                        <polyline points="8 16 10 10 16 8 14 14 8 16"/>
-                                        <circle cx={12} cy={12} r={9}/>
-                                    </svg>
-                                    <span className="text-sm  ml-2">Performance</span>
-                                </div>
-                            </li>
+                    className="my-12 w-64 absolute sm:relative bg-gray-800 shadow flex-col justify-between hidden sm:flex">
+                    <div className="px-8 h-full flex items-center">
+                        <ul className="mt-12 list-disc">
+                            {(product?.filters || []).map((filter, index) => (
+                                <li className="w-full items-center mb-6 cursor-pointer" key={index}>
+                                    <span
+                                        className="text-sm text-gray-300 hover:text-gray-500  ml-2">{filter.name}</span>
+                                    <ul className="list-decimal ml-8 text-white">
+                                        {(filter.childs || []).map((value, index) => (
+                                            <CheckboxItem handleFunc={(selected) => setCurrentFilter(selected)}
+                                                          item={value} current={currentFilter} key={index}/>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
                         </ul>
                     </div>
+                    <button type="button"
+                            className="py-2 px-4 mx-auto mb-4 bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-2/3 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-full">
+                        Add to cart
+                    </button>
                 </div>
                 {/* Sidebar ends */}
 

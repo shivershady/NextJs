@@ -48,3 +48,18 @@ export const getHotProductsError = (errMess) => ({
   type: TYPE.GET_HOT_PRODUCTS_ERROR,
   errMess,
 });
+
+//Detail ================================================================
+export const getProductDetail = (payload) => ({
+  type: TYPE.GET_PRODUCT_DETAIL,
+  payload,
+});
+export const getProductDetailSuccess = (data, total) => ({
+  type: TYPE.GET_PRODUCT_DETAIL_SUCCESS,
+  data: data,
+  total: total,
+});
+export const getProductDetailError = (errMess) => ({
+  type: TYPE.GET_PRODUCT_DETAIL_ERROR,
+  errMess,
+});

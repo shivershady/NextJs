@@ -9,9 +9,11 @@ import {
     getSellingProductsError,
     getHotProductsSuccess,
     getHotProductsError,
+    getProductDetailSuccess,
+    getProductDetailError,
 } from "../actions/product";
 
-import {GET_PRODUCTS, GET_SELLING_PRODUCTS, GET_HOT_PRODUCTS} from "../contants/product";
+import {GET_PRODUCTS, GET_SELLING_PRODUCTS, GET_HOT_PRODUCTS , GET_PRODUCT_DETAIL} from "../contants/product";
 
 export function* getProducts(action) {
     const url = `api/products/get?active=1&id_website=4&id_cat=${action.offset?.id_cart ? action.offset?.id_cart:''}&id_filter=${action.offset?.id_filter ? action.offset?.id_filter :''}`;
@@ -43,10 +45,21 @@ export function* getHotProducts(action) {
     }
 }
 
+export function* getProductDetail(action) {
+    const url = `api/products/detail?alias=${action.payload.alias}`;
+    try {
+        const response = yield call(Request, url);
+        yield put(getProductDetailSuccess(response));
+    } catch (error) {
+        yield put(getProductDetailError(error.message));
+    }
+}
+
 export default function* ProductSaga() {
     yield all([
         yield takeLatest(GET_PRODUCTS, getProducts),
         yield takeLatest(GET_SELLING_PRODUCTS, getSellingProducts),
         yield takeLatest(GET_HOT_PRODUCTS, getHotProducts),
+        yield takeLatest(GET_PRODUCT_DETAIL, getProductDetail),
     ]);
 }
